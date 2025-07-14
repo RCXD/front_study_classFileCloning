@@ -7,6 +7,8 @@
 .carousel {
   width: 300vw;
   display: flex;
+
+  transition: all 1s;
 }
 
 .box > img {
