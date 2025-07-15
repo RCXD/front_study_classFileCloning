@@ -1,4 +1,6 @@
 const box = document.querySelector('.box');
+const chk = document.querySelector('#chk');
+const nextBtn = document.querySelector('.next');
 
 let boxY = box.scrollHeight;
 console.log(boxY);
@@ -12,8 +14,32 @@ box.addEventListener('scroll', () => {
   let scroll = box.scrollTop;
   
   if( isDisabled && boxHeight + scroll > boxY - 5 ) {
-    document.querySelector('#chk').disabled = false;
+    chk.disabled = false;
     isDisabled = false;
   }
+
+})
+
+nextBtn.addEventListener('click', () => {
+  if( chk.checked ) {
+    alert('다음페이지로 이동');
+  } else {
+    alert('약관동의 안함')
+  }
+})
+
+// 446p. 그림으로 볼 수 있음
+console.log(window.innerHeight);
+console.log(document.body.clientHeight)
+
+const innerHeight = window.innerHeight;
+const bodyHeight = document.body.clientHeight;
+
+window.addEventListener('scroll', () => {
+  console.log(window.scrollY);
+
+  const status = window.scrollY / (bodyHeight - innerHeight) * 100;
+
+  document.querySelector('.status-bar').style.width = `${status}%`;
 
 })
